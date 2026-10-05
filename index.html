@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منذر الزين | Mounzer El Zein - Software & ERP Developer</title>
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <title>Mounzer El Zein | Software & ERP Developer</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -24,7 +24,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -63,10 +63,11 @@
         }
 
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--text-main);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
         .logo span {
@@ -76,13 +77,14 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 1.8rem;
         }
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: 0.3s ease;
         }
 
@@ -117,16 +119,17 @@
             color: var(--primary);
             border: 1px solid rgba(88, 166, 255, 0.2);
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.25;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
         }
 
         .hero h1 span {
@@ -137,10 +140,10 @@
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
-            text-align: justify;
-            text-align-last: center;
+            text-align: center;
+            line-height: 1.7;
         }
 
         .hero-btns {
@@ -159,6 +162,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 0.95rem;
             border: none;
             cursor: pointer;
         }
@@ -196,6 +200,7 @@
             font-weight: 700;
             margin-bottom: 3rem;
             position: relative;
+            letter-spacing: -0.5px;
         }
 
         .section-title::after {
@@ -208,7 +213,7 @@
             border-radius: 2px;
         }
 
-        /* Cards & Grids */
+        /* Grids & Cards */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -218,7 +223,7 @@
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .card {
@@ -262,9 +267,9 @@
         /* Timeline (Experience & Education) */
         .timeline {
             position: relative;
-            border-right: 2px solid var(--border-color);
-            margin-right: 1rem;
-            padding-right: 1.5rem;
+            border-left: 2px solid var(--border-color);
+            margin-left: 1rem;
+            padding-left: 1.5rem;
         }
 
         .timeline-item {
@@ -275,7 +280,7 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            right: -2.1rem;
+            left: -2.1rem;
             top: 0.3rem;
             width: 12px;
             height: 12px;
@@ -291,15 +296,20 @@
         }
 
         .timeline-title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 700;
             margin: 0.2rem 0;
         }
 
         .timeline-subtitle {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-bottom: 0.5rem;
+        }
+
+        .timeline p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         /* Contact Form */
@@ -364,7 +374,7 @@
             transform: translateY(-3px);
         }
 
-        /* Languages & Badges */
+        /* Languages */
         .lang-grid {
             display: flex;
             gap: 1rem;
@@ -403,14 +413,14 @@
 
     <!-- Header Navigation -->
     <header>
-        <a href="#" class="logo">منذر الزين<span>.dev</span></a>
+        <a href="#" class="logo">Mounzer<span>.dev</span></a>
         <nav>
             <ul>
-                <li><a href="#about">عنّي</a></li>
-                <li><a href="#experience">الخبرات والتعليم</a></li>
-                <li><a href="#projects">المشاريع</a></li>
-                <li><a href="#skills">المهارات</a></li>
-                <li><a href="#contact">التواصل</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -418,16 +428,17 @@
     <!-- Hero Section -->
     <section class="hero" id="about">
         <div class="container hero-content">
-            <span class="badge"><i class="fa-solid fa-graduation-cap"></i> خريج علوم كمبيوتر (ديسمبر 2025)</span>
-            <h1>مرحباً، أنا <span>منذر الزين</span></h1>
+            <span class="badge"><i class="fa-solid fa-graduation-cap"></i> Computer Science Graduate (Dec 2025)</span>
+            <h1>Hi, I'm <span>Mounzer El Zein</span></h1>
             <p>
-                مطور برمجيات وأنظمة ERP (Odoo) حافل بالخلفيات المتنوعة التي تجمع بين البرمجة، إدارة الأعمال، والعلوم التحليلية.
-                لدي قدرة مثبتة على بناء وتطوير حلول الويب المتكاملة، إدارة قواعد البيانات، وتطويق التكنولوجيا لخدمة متطلبات الأعمال الفعلية.
-                مستعد تماماً للعمل الميداني وإعادة الاستقرار حسب متطلبات الشركات العالمية.
+                A creative, solution-oriented Computer Science Graduate with hands-on experience in ERP systems (Odoo) and enterprise software logic[span_0](start_span)[span_0](end_span). 
+                Proven ability to independently build and deploy web solutions, combined with a strong foundation in Java (OOP) and data management[span_1](start_span)[span_1](end_span). 
+                Entrepreneurial by nature, with a diverse background in Medicine and Business Management, offering a unique perspective on technical consulting[span_2](start_span)[span_2](end_span). 
+                Fully prepared for international relocation and on-site client deployment[span_3](start_span)[span_3](end_span).
             </p>
             <div class="hero-btns">
-                <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-code"></i> استعرض مشاريعي</a>
-                <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-paper-plane"></i> تواصل معي</a>
+                <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-code"></i> View Projects</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-paper-plane"></i> Get in Touch</a>
             </div>
         </div>
     </section>
@@ -435,28 +446,28 @@
     <!-- Experience & Education Section -->
     <section id="experience">
         <div class="container">
-            <h2 class="section-title">الخبرات والمسار التعليمي</h2>
+            <h2 class="section-title">Experience & Education</h2>
             <div class="grid-2">
                 
-                <!-- Technical & Practical Experience -->
+                <!-- Technical Experience -->
                 <div>
-                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);"><i class="fa-solid fa-briefcase"></i> الخبرات والتدريب التقني</h3>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);"><i class="fa-solid fa-briefcase"></i> Experience & Internships</h3>
                     <div class="timeline">
                         
-                        <!-- CMA CGM Training -->
+                        <!-- CMA CGM Internship -->
                         <div class="timeline-item">
-                            <span class="timeline-date">تدريب مكثف</span>
+                            <span class="timeline-date">1-Month Internship</span>
                             <div class="timeline-title">IT Department Intern</div>
                             <div class="timeline-subtitle">CMA CGM - Tripoli Branch</div>
-                            <p>تدريب عملي لمدة شهر في قسم تكنولوجيا المعلومات، شمل الدعم الفني، إدارة الشبكات والمعدات، ومتابعة الأنظمة والحلول التقنية للمؤسسة.</p>
+                            <p>Gained hands-on operational exposure in IT infrastructure, network support, system maintenance, and user support within a corporate enterprise environment.</p>
                         </div>
 
                         <!-- Independent Odoo Developer -->
                         <div class="timeline-item">
-                            <span class="timeline-date">2024 - الحاضر</span>
-                            <div class="timeline-title">ERP & Odoo Developer (مستقل)</div>
-                            <div class="timeline-subtitle">تطوير وتخصيص الحلول البرمجية</div>
-                            <p>تخصيص وإعداد وحدات Odoo لبناء مواقع الأعمال ودعم العمليات التجارية وتكامل منطق البرمجيات الخلفي (Backend).</p>
+                            <span class="timeline-date">2024 - Present</span>
+                            <div class="timeline-title">ERP Developer (Independent)</div>
+                            <div class="timeline-subtitle">Odoo Platform</div>
+                            <p>Independently configured and customized Odoo modules to build functional business websites, design user-friendly interfaces, and manage end-to-end deployment lifecycles[span_4](start_span)[span_4](end_span).</p>
                         </div>
 
                         <!-- IHV Dubai Intern -->
@@ -464,44 +475,44 @@
                             <span class="timeline-date">2024</span>
                             <div class="timeline-title">Software Development Intern</div>
                             <div class="timeline-subtitle">IHV Dubai (International Health Value)</div>
-                            <p>التركيز على تطوير تطبيقات Java ومبادئ البرمجة الكائنية (OOP) وبناء معماريات البرمجيات الموجهة للرعاية الصحية.</p>
+                            <p>Focused on Java Development and Object-Oriented Programming (OOP) fundamentals, building core logic within a healthcare technology context[span_5](start_span)[span_5](end_span).</p>
                         </div>
 
                         <!-- GIS Arabia -->
                         <div class="timeline-item">
                             <span class="timeline-date">2022</span>
-                            <div class="timeline-title">Data Entry & GIS Operator</div>
-                            <div class="timeline-subtitle">GIS Arabia | الانتخابات النيابية اللبنانية</div>
-                            <p>معالجة وتحليل بيانات انتخابية حساسة باستخدام أدوات نظم المعلومات الجغرافية (GIS) بدقة 100% تحت وضغط زمني عالٍ.</p>
+                            <div class="timeline-title">Data Entry Operator</div>
+                            <div class="timeline-subtitle">GIS Arabia | Lebanese Elections 2022</div>
+                            <p>Processed critical electoral data using GIS tools, maintaining 100% data accuracy under intense pressure and tight schedules[span_6](start_span)[span_6](end_span).</p>
                         </div>
 
                     </div>
                 </div>
 
-                <!-- Education & Management -->
+                <!-- Education & Leadership -->
                 <div>
-                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);"><i class="fa-solid fa-graduation-cap"></i> التعليم والخبرة التشغيلية</h3>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);"><i class="fa-solid fa-graduation-cap"></i> Education & Business</h3>
                     <div class="timeline">
                         
                         <div class="timeline-item">
-                            <span class="timeline-date">تخرج: ديسمبر 2025</span>
-                            <div class="timeline-title">بكالوريوس علوم الكمبيوتر (B.Sc.)</div>
-                            <div class="timeline-subtitle">جامعة الجنان (Jinan University) - لبنان</div>
-                            <p>دراسة متعمقة في تطوير البرمجيات، قواعد البيانات، الخوارزميات، وهندسة النظم.</p>
+                            <span class="timeline-date">Graduated: Dec 2025</span>
+                            <div class="timeline-title">B.Sc. in Computer Science</div>
+                            <div class="timeline-subtitle">Jinan University, Lebanon</div>
+                            <p>Graduated with strong technical fundamentals in software development, database design, OOP architectures, and system analysis[span_7](start_span)[span_7](end_span).</p>
                         </div>
 
                         <div class="timeline-item">
                             <span class="timeline-date">2017 - 2021</span>
-                            <div class="timeline-title">دراسة الطب البشري (3 سنوات)</div>
-                            <div class="timeline-subtitle">المملكة المغربية</div>
-                            <p>إتمام 3 سنوات في كلية الطب قبل الانتقال لعلوم الكمبيوتر؛ مما أكسبني عمقاً تحليلياً وقدرة فائقة على التكيف وحل المشكلات التخصصية.</p>
+                            <div class="timeline-title">Undergraduate Medical Studies (3 Years)</div>
+                            <div class="timeline-subtitle">Morocco</div>
+                            <p>Completed 3 years of intensive medical education; transitioned to Computer Science, demonstrating exceptional adaptability and analytical depth[span_8](start_span)[span_8](end_span).</p>
                         </div>
 
                         <div class="timeline-item">
-                            <span class="timeline-date">2017 - الحاضر</span>
-                            <div class="timeline-title">مالك ومدير مشروع Taybah (حلويات ورسومات)</div>
-                            <div class="timeline-subtitle">إدارة وتأسيس عمل خاص</div>
-                            <p>إدارة كافة العمليات: المشتريات، الميزانيات المالية، المفاوضات، والتسويق، مما عزز لدي عقلية الأعمال والتفكير التنفيذي (Business-First Mindset).</p>
+                            <span class="timeline-date">2017 - Present</span>
+                            <div class="timeline-title">Business Owner & Manager</div>
+                            <div class="timeline-subtitle">Taybah (Dessert Shop)</div>
+                            <p>Managing end-to-end business cycles: procurement, financial budgeting, and customer negotiations to foster a strong business-first mindset[span_9](start_span)[span_9](end_span).</p>
                         </div>
 
                     </div>
@@ -514,13 +525,13 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">أبرز المشاريع والتطبيقات</h2>
+            <h2 class="section-title">Key Projects</h2>
             <div class="grid-3">
                 
                 <div class="card">
                     <i class="fa-solid fa-hospital-user skill-icon"></i>
-                    <h3>مشروع التخرج: نظام إدارة العيادات</h3>
-                    <p>منصة ويب متكاملة (Full-Stack) لإدارة العيادات الطبية، مع نظام أذونات معقد لخمس أدوار مستخدمين مختلفة وتنسيق المواعيد في الوقت الفعلي.</p>
+                    <h3>Enterprise Clinic Management</h3>
+                    <p>Capstone full-stack web platform featuring complex role-based permissions, patient tracking, and real-time appointment scheduling[span_10](start_span)[span_10](end_span).</p>
                     <div class="skills-tags">
                         <span class="tag">PHP</span>
                         <span class="tag">MySQL</span>
@@ -531,10 +542,10 @@
 
                 <div class="card">
                     <i class="fa-solid fa-diagram-project skill-icon"></i>
-                    <h3>تخصيص وتكامل أنظمة Odoo ERP</h3>
-                    <p>بناء وتعديل وحدات أودو للشركات، ربط واجهات المستخدم بالقواعد الخلفية، وتطوير أتمتة دورات العمل للمبيعات والمخازن.</p>
+                    <h3>Odoo ERP Customization</h3>
+                    <p>Designed, configured, and customized business modules and website builder on Odoo to streamline operations and backend workflows[span_11](start_span)[span_11](end_span)[span_12](start_span)[span_12](end_span).</p>
                     <div class="skills-tags">
-                        <span class="tag">Odoo</span>
+                        <span class="tag">Odoo ERP</span>
                         <span class="tag">Python</span>
                         <span class="tag">XML</span>
                         <span class="tag">PostgreSQL</span>
@@ -543,11 +554,11 @@
 
                 <div class="card">
                     <i class="fa-solid fa-pen-nib skill-icon"></i>
-                    <h3>التصميم وتطوير الهويات البصرية</h3>
-                    <p>تقديم خدمات تصميم الهويات البصرية المستقلة للشركات الصغيرة، واستخدام أحدث معايير UI/UX لتحسين واجهات المستخدم البرمجية.</p>
+                    <h3>Freelance Visual Design</h3>
+                    <p>Crafted brand identities and marketing collateral for local small businesses while applying UI/UX standards to web applications[span_13](start_span)[span_13](end_span).</p>
                     <div class="skills-tags">
                         <span class="tag">Graphic Design</span>
-                        <span class="tag">UI/UX Design</span>
+                        <span class="tag">UI/UX</span>
                         <span class="tag">Branding</span>
                     </div>
                 </div>
@@ -559,27 +570,27 @@
     <!-- Skills & Languages Section -->
     <section id="skills">
         <div class="container">
-            <h2 class="section-title">المهارات واللغات</h2>
+            <h2 class="section-title">Skills & Languages</h2>
             <div class="grid-3">
                 
                 <div class="card">
                     <i class="fa-solid fa-code skill-icon"></i>
-                    <h3>البرمجة وتطوير الويب</h3>
+                    <h3>Programming & Web</h3>
                     <div class="skills-tags">
                         <span class="tag">Java (OOP)</span>
                         <span class="tag">Python</span>
                         <span class="tag">PHP</span>
                         <span class="tag">JavaScript</span>
                         <span class="tag">SQL</span>
-                        <span class="tag">HTML5 / CSS3</span>
+                        <span class="tag">HTML/CSS</span>
                     </div>
                 </div>
 
                 <div class="card">
                     <i class="fa-solid fa-gears skill-icon"></i>
-                    <h3>أنظمة ERP والبيانات</h3>
+                    <h3>ERP & Operations</h3>
                     <div class="skills-tags">
-                        <span class="tag">Odoo ERP</span>
+                        <span class="tag">Odoo Implementation</span>
                         <span class="tag">GIS Data Operations</span>
                         <span class="tag">Data Migration</span>
                         <span class="tag">Workflow Automation</span>
@@ -588,7 +599,7 @@
 
                 <div class="card">
                     <i class="fa-solid fa-certificate skill-icon"></i>
-                    <h3>التدريب الأكاديمي والشهادات</h3>
+                    <h3>Training & Certifications</h3>
                     <div class="skills-tags">
                         <span class="tag">Zaka AI (Predictive Modeling)</span>
                         <span class="tag">Semicolon (Cyber Security)</span>
@@ -600,23 +611,23 @@
 
             <!-- Languages -->
             <div style="margin-top: 3rem;">
-                <h3 style="text-align: center; margin-bottom: 1.5rem;"><i class="fa-solid fa-language"></i> اللغات المُتقنة</h3>
+                <h3 style="text-align: center; margin-bottom: 1.5rem;"><i class="fa-solid fa-language"></i> Language Proficiency</h3>
                 <div class="lang-grid">
                     <div class="lang-card">
-                        <h4>العربية</h4>
-                        <span style="color: var(--primary); font-size: 0.85rem;">اللغة الأم (Fluent)</span>
+                        <h4>Arabic</h4>
+                        <span style="color: var(--primary); font-size: 0.85rem;">Native / Fluent[span_14](start_span)[span_14](end_span)</span>
                     </div>
                     <div class="lang-card">
-                        <h4>الإنكليزية</h4>
-                        <span style="color: var(--primary); font-size: 0.85rem;">طلاقة كاملة (Fluent)</span>
+                        <h4>English</h4>
+                        <span style="color: var(--primary); font-size: 0.85rem;">Fluent[span_15](start_span)[span_15](end_span)</span>
                     </div>
                     <div class="lang-card">
-                        <h4>الفرنسية</h4>
-                        <span style="color: var(--primary); font-size: 0.85rem;">طلاقة كاملة (Fluent)</span>
+                        <h4>French</h4>
+                        <span style="color: var(--primary); font-size: 0.85rem;">Fluent[span_16](start_span)[span_16](end_span)</span>
                     </div>
                     <div class="lang-card">
-                        <h4>التركية</h4>
-                        <span style="color: var(--primary); font-size: 0.85rem;">مستوى جيد (Good)</span>
+                        <h4>Turkish</h4>
+                        <span style="color: var(--primary); font-size: 0.85rem;">Good[span_17](start_span)[span_17](end_span)</span>
                     </div>
                 </div>
             </div>
@@ -628,20 +639,20 @@
     <section id="contact">
         <div class="container">
             <div class="contact-box">
-                <h2 style="text-align: center;">تواصل معي مباشرة</h2>
+                <h2 style="text-align: center;">Get In Touch</h2>
                 <p style="text-align: center; color: var(--text-muted); margin-top: 0.5rem;">
-                    سواء كان لديك استفسار عن فرصة عمل، مشروع مستقبيلي، أو تطبيق برمدي، يسعدني استقبال رسالتك.
+                    Feel free to send me a message for career opportunities, freelance inquiries, or technical consultations.
                 </p>
                 
-                <!-- Formspree Integration (استبدل YOUR_FORM_ID برابط حسابك من Formspree) -->
+                <!-- Formspree Integration -->
                 <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
-                    <input type="text" name="name" placeholder="الاسم الكامل" required class="form-input">
-                    <input type="email" name="_replyto" placeholder="البريد الإلكتروني" required class="form-input">
-                    <input type="text" name="_subject" placeholder="عنوان الرسالة" class="form-input">
-                    <textarea name="message" rows="4" placeholder="اكتب رسالتك هنا..." required class="form-input"></textarea>
+                    <input type="text" name="name" placeholder="Full Name" required class="form-input">
+                    <input type="email" name="_replyto" placeholder="Email Address" required class="form-input">
+                    <input type="text" name="_subject" placeholder="Subject" class="form-input">
+                    <textarea name="message" rows="4" placeholder="Your Message..." required class="form-input"></textarea>
                     
                     <button type="submit" class="btn btn-primary" style="justify-content: center;">
-                        <i class="fa-solid fa-paper-plane"></i> إرسال الرسالة
+                        <i class="fa-solid fa-paper-plane"></i> Send Message
                     </button>
                 </form>
 
@@ -658,11 +669,11 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2026 منذر الزين | Mounzer El Zein. تم بناء وتطوير الموقع ونشره عبر GitHub Pages.</p>
+            <p>© 2026 Mounzer El Zein. Built and hosted on GitHub Pages.</p>
         </div>
     </footer>
 
-    <!-- Background Animation Script -->
+    <!-- Interactive Canvas Script -->
     <script>
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
@@ -723,3 +734,4 @@
     </script>
 </body>
 </html>
+
