@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منذر الزين | Mounzer El Zein - Software & ERP Developer</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.75);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --primary: #58a6ff;
+            --primary-glow: rgba(88, 166, 255, 0.25);
+            --accent: #238636;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Dynamic Canvas */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 6rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #58a6ff 0%, #a5d6ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            text-align: justify;
+            text-align-last: center;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #0d1117;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Cards & Grids */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(88, 166, 255, 0.4);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Skills */
+        .skill-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            border-radius: 6px;
+            color: var(--primary);
+        }
+
+        /* Timeline (Experience & Education) */
+        .timeline {
+            position: relative;
+            border-right: 2px solid var(--border-color);
+            margin-right: 1rem;
+            padding-right: 1.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            right: -2.1rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0.2rem 0;
+        }
+
+        .timeline-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Form */
+        .contact-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: #0d1117;
+            transform: translateY(-3px);
+        }
+
+        /* Languages & Badges */
+        .lang-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .lang-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header nav { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas-bg"></canvas>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="#" class="logo">منذر الزين<span>.dev</span></a>
+        <nav>
+            <ul>
+                <li><a href="#about">عنّي</a></li>
+                <li><a href="#experience">الخبرات والتعليم</a></li>
+                <li><a href="#projects">المشاريع</a></li>
+                <li><a href="#skills">المهارات</a></li>
+                <li><a href="#contact">التواصل</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container hero-content">
+            <span class="badge"><i class="fa-solid fa-graduation-cap"></i> خريج علوم كمبيوتر (ديسمبر 2025)</span>
+            <h1>مرحباً، أنا <span>منذر الزين</span></h1>
+            <p>
+                مطور برمجيات وأنظمة ERP (Odoo) حافل بالخلفيات المتنوعة التي تجمع بين البرمجة، إدارة الأعمال، والعلوم التحليلية.
+                لدي قدرة مثبتة على بناء وتطوير حلول الويب المتكاملة، إدارة قواعد البيانات، وتطويق التكنولوجيا لخدمة متطلبات الأعمال الفعلية.
+                مستعد تماماً للعمل الميداني وإعادة الاستقرار حسب متطلبات الشركات العالمية.
+            </p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-code"></i> استعرض مشاريعي</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-paper-plane"></i> تواصل معي</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">الخبرات والمسار التعليمي</h2>
+            <div class="grid-2">
+                
+                <!-- Technical & Practical Experience -->
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);"><i class="fa-solid fa-briefcase"></i> الخبرات والتدريب التقني</h3>
+                    <div class="timeline">
+                        
+                        <!-- CMA CGM Training -->
+                        <div class="timeline-item">
+                            <span class="timeline-date">تدريب مكثف</span>
+                            <div class="timeline-title">IT Department Intern</div>
+                            <div class="timeline-subtitle">CMA CGM - Tripoli Branch</div>
+                            <p>تدريب عملي لمدة شهر في قسم تكنولوجيا المعلومات، شمل الدعم الفني، إدارة الشبكات والمعدات، ومتابعة الأنظمة والحلول التقنية للمؤسسة.</p>
+                        </div>
+
+                        <!-- Independent Odoo Developer -->
+                        <div class="timeline-item">
+                            <span class="timeline-date">2024 - الحاضر</span>
+                            <div class="timeline-title">ERP & Odoo Developer (مستقل)</div>
+                            <div class="timeline-subtitle">تطوير وتخصيص الحلول البرمجية</div>
+                            <p>تخصيص وإعداد وحدات Odoo لبناء مواقع الأعمال ودعم العمليات التجارية وتكامل منطق البرمجيات الخلفي (Backend).</p>
+                        </div>
+
+                        <!-- IHV Dubai Intern -->
+                        <div class="timeline-item">
+                            <span class="timeline-date">2024</span>
+                            <div class="timeline-title">Software Development Intern</div>
+                            <div class="timeline-subtitle">IHV Dubai (International Health Value)</div>
+                            <p>التركيز على تطوير تطبيقات Java ومبادئ البرمجة الكائنية (OOP) وبناء معماريات البرمجيات الموجهة للرعاية الصحية.</p>
+                        </div>
+
+                        <!-- GIS Arabia -->
+                        <div class="timeline-item">
+                            <span class="timeline-date">2022</span>
+                            <div class="timeline-title">Data Entry & GIS Operator</div>
+                            <div class="timeline-subtitle">GIS Arabia | الانتخابات النيابية اللبنانية</div>
+                            <p>معالجة وتحليل بيانات انتخابية حساسة باستخدام أدوات نظم المعلومات الجغرافية (GIS) بدقة 100% تحت وضغط زمني عالٍ.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Education & Management -->
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);"><i class="fa-solid fa-graduation-cap"></i> التعليم والخبرة التشغيلية</h3>
+                    <div class="timeline">
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">تخرج: ديسمبر 2025</span>
+                            <div class="timeline-title">بكالوريوس علوم الكمبيوتر (B.Sc.)</div>
+                            <div class="timeline-subtitle">جامعة الجنان (Jinan University) - لبنان</div>
+                            <p>دراسة متعمقة في تطوير البرمجيات، قواعد البيانات، الخوارزميات، وهندسة النظم.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-date">2017 - 2021</span>
+                            <div class="timeline-title">دراسة الطب البشري (3 سنوات)</div>
+                            <div class="timeline-subtitle">المملكة المغربية</div>
+                            <p>إتمام 3 سنوات في كلية الطب قبل الانتقال لعلوم الكمبيوتر؛ مما أكسبني عمقاً تحليلياً وقدرة فائقة على التكيف وحل المشكلات التخصصية.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-date">2017 - الحاضر</span>
+                            <div class="timeline-title">مالك ومدير مشروع Taybah (حلويات ورسومات)</div>
+                            <div class="timeline-subtitle">إدارة وتأسيس عمل خاص</div>
+                            <p>إدارة كافة العمليات: المشتريات، الميزانيات المالية، المفاوضات، والتسويق، مما عزز لدي عقلية الأعمال والتفكير التنفيذي (Business-First Mindset).</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">أبرز المشاريع والتطبيقات</h2>
+            <div class="grid-3">
+                
+                <div class="card">
+                    <i class="fa-solid fa-hospital-user skill-icon"></i>
+                    <h3>مشروع التخرج: نظام إدارة العيادات</h3>
+                    <p>منصة ويب متكاملة (Full-Stack) لإدارة العيادات الطبية، مع نظام أذونات معقد لخمس أدوار مستخدمين مختلفة وتنسيق المواعيد في الوقت الفعلي.</p>
+                    <div class="skills-tags">
+                        <span class="tag">PHP</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <i class="fa-solid fa-diagram-project skill-icon"></i>
+                    <h3>تخصيص وتكامل أنظمة Odoo ERP</h3>
+                    <p>بناء وتعديل وحدات أودو للشركات، ربط واجهات المستخدم بالقواعد الخلفية، وتطوير أتمتة دورات العمل للمبيعات والمخازن.</p>
+                    <div class="skills-tags">
+                        <span class="tag">Odoo</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">XML</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <i class="fa-solid fa-pen-nib skill-icon"></i>
+                    <h3>التصميم وتطوير الهويات البصرية</h3>
+                    <p>تقديم خدمات تصميم الهويات البصرية المستقلة للشركات الصغيرة، واستخدام أحدث معايير UI/UX لتحسين واجهات المستخدم البرمجية.</p>
+                    <div class="skills-tags">
+                        <span class="tag">Graphic Design</span>
+                        <span class="tag">UI/UX Design</span>
+                        <span class="tag">Branding</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Languages Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">المهارات واللغات</h2>
+            <div class="grid-3">
+                
+                <div class="card">
+                    <i class="fa-solid fa-code skill-icon"></i>
+                    <h3>البرمجة وتطوير الويب</h3>
+                    <div class="skills-tags">
+                        <span class="tag">Java (OOP)</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">HTML5 / CSS3</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <i class="fa-solid fa-gears skill-icon"></i>
+                    <h3>أنظمة ERP والبيانات</h3>
+                    <div class="skills-tags">
+                        <span class="tag">Odoo ERP</span>
+                        <span class="tag">GIS Data Operations</span>
+                        <span class="tag">Data Migration</span>
+                        <span class="tag">Workflow Automation</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <i class="fa-solid fa-certificate skill-icon"></i>
+                    <h3>التدريب الأكاديمي والشهادات</h3>
+                    <div class="skills-tags">
+                        <span class="tag">Zaka AI (Predictive Modeling)</span>
+                        <span class="tag">Semicolon (Cyber Security)</span>
+                        <span class="tag">CMA CGM (IT Operations)</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Languages -->
+            <div style="margin-top: 3rem;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;"><i class="fa-solid fa-language"></i> اللغات المُتقنة</h3>
+                <div class="lang-grid">
+                    <div class="lang-card">
+                        <h4>العربية</h4>
+                        <span style="color: var(--primary); font-size: 0.85rem;">اللغة الأم (Fluent)</span>
+                    </div>
+                    <div class="lang-card">
+                        <h4>الإنكليزية</h4>
+                        <span style="color: var(--primary); font-size: 0.85rem;">طلاقة كاملة (Fluent)</span>
+                    </div>
+                    <div class="lang-card">
+                        <h4>الفرنسية</h4>
+                        <span style="color: var(--primary); font-size: 0.85rem;">طلاقة كاملة (Fluent)</span>
+                    </div>
+                    <div class="lang-card">
+                        <h4>التركية</h4>
+                        <span style="color: var(--primary); font-size: 0.85rem;">مستوى جيد (Good)</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2 style="text-align: center;">تواصل معي مباشرة</h2>
+                <p style="text-align: center; color: var(--text-muted); margin-top: 0.5rem;">
+                    سواء كان لديك استفسار عن فرصة عمل، مشروع مستقبيلي، أو تطبيق برمدي، يسعدني استقبال رسالتك.
+                </p>
+                
+                <!-- Formspree Integration (استبدل YOUR_FORM_ID برابط حسابك من Formspree) -->
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+                    <input type="text" name="name" placeholder="الاسم الكامل" required class="form-input">
+                    <input type="email" name="_replyto" placeholder="البريد الإلكتروني" required class="form-input">
+                    <input type="text" name="_subject" placeholder="عنوان الرسالة" class="form-input">
+                    <textarea name="message" rows="4" placeholder="اكتب رسالتك هنا..." required class="form-input"></textarea>
+                    
+                    <button type="submit" class="btn btn-primary" style="justify-content: center;">
+                        <i class="fa-solid fa-paper-plane"></i> إرسال الرسالة
+                    </button>
+                </form>
+
+                <div class="social-links">
+                    <a href="mailto:Mounzerzein77@icloud.com" class="social-icon" title="Email"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="tel:+96181235853" class="social-icon" title="Phone"><i class="fa-solid fa-phone"></i></a>
+                    <a href="https://github.com" class="social-icon" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com" class="social-icon" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 منذر الزين | Mounzer El Zein. تم بناء وتطوير الموقع ونشره عبر GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <!-- Background Animation Script -->
+    <script>
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particles = [];
+        const particleCount = 40;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: (Math.random() - 0.5) * 0.4
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((p, index) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(88, 166, 255, 0.4)';
+                ctx.fill();
+
+                for (let j = index + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(88, 166, 255, ${0.12 - dist / 120 * 0.12})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
